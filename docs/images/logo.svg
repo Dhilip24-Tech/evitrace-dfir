@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">EviTrace-DFIR mark</title>
+  <desc id="logo-desc">A letter E built from timeline strokes, with a highlighted interval bracket.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0D151F"/>
+      <stop offset="1" stop-color="#0A1017"/>
+    </linearGradient>
+    <pattern id="ticks" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#FFFFFF" stroke-opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#surface)"/>
+  <rect width="512" height="512" rx="112" fill="url(#ticks)"/>
+  <rect x="1.5" y="1.5" width="509" height="509" rx="110.5" fill="none" stroke="#243447"/>
+
+  <g fill="none" stroke="#EAF1FA" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M148 136v228"/>
+    <path d="M148 136h198"/>
+    <path d="M148 364h198"/>
+  </g>
+  <path d="M162 236h102a14 14 0 0 1 0 28H162z" fill="#4C8DFF"/>
+
+  <g fill="none" stroke="#6EA6FF" stroke-linecap="round">
+    <path d="M340 222v56" stroke-width="6"/>
+    <path d="M326 222h28" stroke-width="6"/>
+    <path d="M326 278h28" stroke-width="6"/>
+  </g>
+  <circle cx="340" cy="250" r="8" fill="#9CC4FF"/>
+
+  <rect x="16" y="16" width="480" height="480" rx="98" fill="none" stroke="#FFFFFF" stroke-opacity="0.035"/>
+</svg>
