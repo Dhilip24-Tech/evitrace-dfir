@@ -7,12 +7,13 @@ import os
 import shlex
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-PYTHON = ROOT / ".venv" / "Scripts" / "python.exe"
+PYTHON = Path(sys.executable)
 WORKSPACE = ROOT / "workspace" / "demo"
 OUT = ROOT / "artifacts"
 QUESTIONS = ROOT / "examples" / "demo_case" / "questions.json"

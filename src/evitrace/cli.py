@@ -41,7 +41,10 @@ DEFAULT_CALIBRATION = Path("artifacts/conformal-qhat-alpha-0.05.json")
 
 
 def workspace_of(value: str | None) -> Path:
-    return Path(value or os.environ.get("EVITRACE_WORKSPACE", "./workspace")).resolve()
+    selected = value or os.environ.get("EVITRACE_WORKSPACE")
+    if selected is None:
+        selected = "./workspace"
+    return Path(selected).resolve()
 
 
 def open_case(case_id: str, workspace: str | None) -> CaseStore:
@@ -192,7 +195,7 @@ def index(
 ) -> None:
     store = open_case(case_id, workspace)
     count = store.rebuild_index()
-    typer.echo(f"indexed {count} events for {case_id} (FTS5 BM25 + bounded semantic vectors)")
+    typer.echo(f"indexed {count} events for {case_id} (FTS5 BM25)")
 
 
 def _print_proof(case_id: str, question_id: str, question: str, cert: Certificate) -> None:

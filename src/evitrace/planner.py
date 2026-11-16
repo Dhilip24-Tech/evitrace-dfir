@@ -103,16 +103,16 @@ def plan_question(question: str, store: CaseStore) -> Claim:
                 left_event_id=downloads[0].event_id,
                 right_event_id=processes[0].event_id,
             )
-        critical = {"file_name": file_name, "host": host}
+        critical_fields = {"file_name": file_name, "host": host}
         if file_hash:
-            critical["file_hash_sha256"] = file_hash
+            critical_fields["file_hash_sha256"] = file_hash
         return _make_claim(
             store,
             text,
             kind=ClaimKind.TEMPORAL,
             cited=cited,
             temporal=temporal,
-            critical=critical,
+            critical=critical_fields,
             host=host,
         )
 
@@ -133,18 +133,18 @@ def plan_question(question: str, store: CaseStore) -> Claim:
             temporal = TemporalAssertion(
                 left_event_id=left[0].event_id, right_event_id=right[0].event_id
             )
-        critical: dict[str, str] = {}
+        critical_ids: dict[str, str] = {}
         if left:
-            critical["process_start"] = left[0].event_id
+            critical_ids["process_start"] = left[0].event_id
         if right:
-            critical["firewall_block"] = right[0].event_id
+            critical_ids["firewall_block"] = right[0].event_id
         return _make_claim(
             store,
             text,
             kind=ClaimKind.TEMPORAL,
             cited=cited,
             temporal=temporal,
-            critical=critical,
+            critical=critical_ids,
             host=host,
         )
 
@@ -191,18 +191,18 @@ def plan_question(question: str, store: CaseStore) -> Claim:
             temporal = TemporalAssertion(
                 left_event_id=created[0].event_id, right_event_id=installs[0].event_id
             )
-        critical: dict[str, str] = {}
+        critical_events: dict[str, str] = {}
         if created:
-            critical["file_created"] = created[0].event_id
+            critical_events["file_created"] = created[0].event_id
         if installs:
-            critical["os_install"] = installs[0].event_id
+            critical_events["os_install"] = installs[0].event_id
         return _make_claim(
             store,
             text,
             kind=ClaimKind.TEMPORAL,
             cited=cited,
             temporal=temporal,
-            critical=critical,
+            critical=critical_events,
             host=created[0].host if created else "",
         )
 
@@ -226,11 +226,11 @@ def plan_question(question: str, store: CaseStore) -> Claim:
     hits = store.search(text, limit=3)
     cited = [hit.event_id for hit in hits]
     terms = [token for token in re.findall(r"[A-Za-z0-9_.\-]{3,}", text)][:2]
-    critical: dict[str, Any] = {"question_term": terms[0]} if terms else {}
+    critical_terms: dict[str, Any] = {"question_term": terms[0]} if terms else {}
     return _make_claim(
         store,
         text,
         kind=ClaimKind.OBSERVATION,
         cited=cited,
-        critical={str(k): str(v) for k, v in critical.items()},
+        critical={str(k): str(v) for k, v in critical_terms.items()},
     )

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from datetime import UTC, datetime
+from typing import Any
 
 from evitrace.models import Certificate, Verdict
 
@@ -40,7 +41,7 @@ def render_report(
     certificates: list[Certificate],
     *,
     generated_at: datetime | None = None,
-    validation: dict[str, object] | None = None,
+    validation: dict[str, Any] | None = None,
 ) -> str:
     now = generated_at or datetime.now(UTC)
     counts = Counter(cert.proof.verdict for cert in certificates)

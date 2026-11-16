@@ -430,9 +430,9 @@ class CaseStore:
                     entry["score"] = float(entry["score"]) + 0.35 * exact_hits
                     entry["excerpt"] = row["search_text"][:160]
         for entry in hits.values():
-            rank = entry.get("lexical_rank")
-            if rank is not None:
-                entry["score"] = float(entry["score"]) + 1.0 / (60.0 + rank)
+            lexical_rank = entry.get("lexical_rank")
+            if lexical_rank is not None:
+                entry["score"] = float(entry["score"]) + 1.0 / (60.0 + lexical_rank)
         ordered = sorted(hits.items(), key=lambda item: float(item[1]["score"]), reverse=True)[
             :limit
         ]

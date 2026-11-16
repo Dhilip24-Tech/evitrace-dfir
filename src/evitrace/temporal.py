@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from z3 import And, Real, RealVal, Solver, sat, unsat
+from z3 import And, ArithRef, Real, RealVal, Solver, sat, unsat
 
 from evitrace.models import (
     CaseConfig,
@@ -30,15 +30,15 @@ def _seconds(value: float) -> str:
 @dataclass
 class SolverModel:
     solver: Solver
-    taus: dict[str, object]
-    deltas: dict[str, object]
+    taus: dict[str, ArithRef]
+    deltas: dict[str, ArithRef]
     constraints: dict[str, str]
 
 
 def _build_model(events: list[EventRecord], config: CaseConfig) -> SolverModel:
     solver = Solver()
-    taus: dict[str, object] = {}
-    deltas: dict[str, object] = {}
+    taus: dict[str, ArithRef] = {}
+    deltas: dict[str, ArithRef] = {}
     constraints: dict[str, str] = {}
 
     hosts = {event.host for event in events} | set(config.hosts)
