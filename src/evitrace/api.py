@@ -8,16 +8,16 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import Depends, FastAPI, Header, HTTPException
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from evitrace.claims import prove_claim
 from evitrace.cpc import issue_certificate
-from evitrace.models import RunRecord
+from evitrace.models import RunRecord, StrictModel
 from evitrace.planner import plan_question
 from evitrace.store import CaseStore, StoreError
 
 
-class AskRequest(BaseModel):
+class AskRequest(StrictModel):
     question: str = Field(min_length=3, max_length=2_000)
     alpha: float = Field(default=0.05, gt=0, lt=1)
 

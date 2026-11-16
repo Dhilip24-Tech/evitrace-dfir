@@ -37,6 +37,19 @@ def test_ask_and_fetch_run(workspace, store: CaseStore) -> None:
     assert run.json()["certificate_id"] == body["certificate_id"]
 
 
+def test_ask_rejects_unknown_fields(workspace, store: CaseStore) -> None:
+    client = TestClient(create_app(workspace, token="test-token"))
+    response = client.post(
+        "/v1/cases/CASE-TEST-001/ask",
+        headers={"Authorization": "Bearer test-token"},
+        json={
+            "question": "Was invoice_q4.exe downloaded and executed on WKSTN-04?",
+            "unexpected": True,
+        },
+    )
+    assert response.status_code == 422
+
+
 def test_unknown_case_is_404(workspace, store: CaseStore) -> None:
     client = TestClient(create_app(workspace, token="test-token"))
     response = client.post(
