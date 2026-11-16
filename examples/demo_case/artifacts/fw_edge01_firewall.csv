@@ -1,0 +1,2 @@
+event_id,host,event_type,timestamp,precision_seconds,time_basis,fields
+EV-004,FW-EDGE-01,firewall_block,2026-10-12T10:00:06Z,1.0,UTC,"{""src_host"": ""WKSTN-04"", ""dst_ip"": ""198.51.100.42"", ""dst_port"": 443, ""action"": ""blocked"", ""rule"": ""egress-deny-443""}"

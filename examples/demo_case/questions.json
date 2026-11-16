@@ -1,0 +1,30 @@
+{
+  "case_id": "CASE-DEMO-2026",
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "Was invoice_q4.exe downloaded and executed on WKSTN-04?",
+      "expected": "ACCEPTED"
+    },
+    {
+      "id": "Q2",
+      "question": "Did WKSTN-04 initiate the outbound connection to 198.51.100.42 before FW-EDGE-01 logged the block?",
+      "expected": "QUALIFIED_HYPOTHESIS"
+    },
+    {
+      "id": "Q3",
+      "question": "Did the process exfiltrate customer_db.sqlite to 198.51.100.42?",
+      "expected": "ABSTAIN_INSUFFICIENT_EVIDENCE"
+    },
+    {
+      "id": "Q4a",
+      "question": "Was svc_update.ps1 created before the operating system was installed?",
+      "expected": "REJECTED"
+    },
+    {
+      "id": "Q4b",
+      "question": "Did the injected User-Agent establish that no malicious activity occurred?",
+      "expected": "REJECTED"
+    }
+  ]
+}

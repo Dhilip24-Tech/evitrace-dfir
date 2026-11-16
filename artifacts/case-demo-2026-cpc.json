@@ -1,0 +1,75 @@
+{
+  "cpc_version": "1.0",
+  "certificate_id": "cpc-CASE-DEMO-2026-run-20261115T091237-ad09",
+  "case_id": "CASE-DEMO-2026",
+  "run_id": "run-20261115T091237-ad09",
+  "issued_at": "2026-11-15T09:12:37.305779Z",
+  "proof": {
+    "claim": {
+      "claim_id": "claim_72806fad09",
+      "case_id": "CASE-DEMO-2026",
+      "text": "Did the process exfiltrate customer_db.sqlite to 198.51.100.42?",
+      "kind": "causal",
+      "claim_type": "cross_event_inference",
+      "subject": "WKSTN-04",
+      "predicate": "",
+      "object": "",
+      "host": "WKSTN-04",
+      "cited_event_ids": [
+        "EV-003",
+        "EV-004"
+      ],
+      "required_predicates": [
+        "file_read(customer_db.sqlite)",
+        "network_bytes_out(198.51.100.42)"
+      ],
+      "temporal": null,
+      "critical_identifiers": {
+        "file_read": "customer_db.sqlite",
+        "network_bytes_out": "198.51.100.42"
+      }
+    },
+    "field_check": {
+      "matched": {},
+      "missing": [
+        "file_read=customer_db.sqlite",
+        "network_bytes_out=198.51.100.42"
+      ],
+      "missing_event_ids": [],
+      "cross_case_event_ids": [],
+      "passed": true
+    },
+    "temporal": {
+      "outcome": "NOT_APPLICABLE",
+      "sat_lt": null,
+      "sat_ge": null,
+      "left_range": null,
+      "right_range": null,
+      "overlap_seconds": null,
+      "unsat_core": [],
+      "reason": "claim has no temporal assertion"
+    },
+    "score": {
+      "field_weight": 0.0,
+      "temporal_weight": 0.5,
+      "lexical_weight": 0.2,
+      "type_weight": 0.5,
+      "score": 0.76,
+      "alpha": 0.05,
+      "qhat": 0.42,
+      "hard_failure": null
+    },
+    "verdict": "ABSTAIN_INSUFFICIENT_EVIDENCE",
+    "reason": "s = 0.760 > qhat = 0.420; missing file_read(customer_db.sqlite), network_bytes_out(198.51.100.42)",
+    "missing_predicates": [
+      "file_read(customer_db.sqlite)",
+      "network_bytes_out(198.51.100.42)"
+    ],
+    "injection_flags": []
+  },
+  "signature": {
+    "alg": "HS256",
+    "key_id": "80a02f75ef09df6f",
+    "value": "07079c10edeead5d840fdc5ae9c36234a8eca72935575e701615244cc6c025cb"
+  }
+}

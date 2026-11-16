@@ -1,0 +1,38 @@
+{
+  "alpha": 0.05,
+  "qhat": 0.42,
+  "n": 20,
+  "rank": 20,
+  "scores": [
+    0.03,
+    0.06,
+    0.11,
+    0.11,
+    0.11,
+    0.12,
+    0.15,
+    0.17,
+    0.2,
+    0.24,
+    0.3,
+    0.32,
+    0.32,
+    0.33,
+    0.34,
+    0.4,
+    0.41,
+    0.42,
+    0.42,
+    0.42
+  ],
+  "weights": {
+    "field": 0.4,
+    "temporal": 0.3,
+    "lexical": 0.2,
+    "type": 0.1
+  },
+  "method": "split-conformal finite-sample corrected quantile",
+  "dataset_sha256": "394ee17daba59e97cc51009316029aa06495dbe91ef24e27028078d4e8ea35be",
+  "created_at": "2026-11-15T09:11:17.591045Z",
+  "notes": "Synthetic pilot split for the local prototype. The threshold is computed by finite-sample corrected split conformal, not copied from the spec. It is not a benchmark result."
+}
