@@ -1,0 +1,83 @@
+name: Bug report
+description: Report a reproducible problem with the prototype.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include real evidence, case databases, `key.bin` files, live
+        certificates, or credentials. Use the synthetic demo case or a minimal
+        record you created yourself.
+
+        Security issues belong in the private advisory flow described in
+        [SECURITY.md](https://github.com/Dhilip24-Tech/evitrace-dfir/blob/main/SECURITY.md).
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact command and any input needed to trigger it.
+      placeholder: |
+        1. Run `evitrace ...`
+        2. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the traceback if there is one. Redact paths and evidence.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Output of `evitrace version`, or the commit SHA.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - Linux
+        - macOS
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      description: Output of `python --version`.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that helps reproduce or understand the issue.
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have removed real evidence and secrets from this report.
+          required: true
+        - label: I searched existing issues before opening this one.
+          required: true

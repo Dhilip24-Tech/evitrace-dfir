@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/Dhilip24-Tech/evitrace-dfir/security/advisories/new
+    about: Use private vulnerability reporting. Do not post exploit details or real evidence in a public issue.
+  - name: Read the architecture and limits
+    url: https://github.com/Dhilip24-Tech/evitrace-dfir/blob/main/docs/architecture.md
+    about: Check the implemented design and known limits before filing a feature request.
